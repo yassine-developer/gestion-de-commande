@@ -12,7 +12,7 @@ class Commande {
     }
 
     display(){
-            return `${this.quantity}x${this.name} - Total ${this.totalPrice().toFixed(2)}€`;
+            return `${this.quantity} x ${this.name} - Total ${this.totalPrice().toFixed(2)}€`;
     }
 }
 
@@ -52,8 +52,14 @@ function totalPrice(){
 
 function afficherTotal(){
     const p = document.querySelector(".prix-total");
-    p.innerHTML= `Total Global : ${totalPrice().toFixed(2)}`;
+    if(!comandeGlobal.length){
+        p.innerHTML = 'Total Global : 0 €';
+    }else{
+    p.innerHTML= `Total Global : ${totalPrice().toFixed(2)}€`;
+    }
 }
+
+afficherTotal();
 
 ajouter.addEventListener('click',(e)=>{
     e.preventDefault();
